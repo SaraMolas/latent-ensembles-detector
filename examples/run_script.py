@@ -20,6 +20,7 @@ start_time = 0  # in seconds
 end_time = 600  # in seconds
 sampling_rate = 30000  # in Hz
 
+# Find neural ensembles and principal neurons in each ensemble
 spike_matrix, _ =  compute_spike_matrix (spikeTimes = spike_times, spikeClusters = spike_clusters, time = time, 
                                          start_time = start_time,  end_time = end_time, sampling_rate = sampling_rate)
 
@@ -28,6 +29,9 @@ n_ensembles =  estimate_ensembles_number(spike_matrix = spike_matrix)
 weights, _ =  perform_fastICA(n_ensembles = n_ensembles, spike_matrix = spike_matrix)
 
 principalCells = find_principal_neurons (weights = weights)
+
+# Plot heatmap of principal cells
+plot_principal_cells_heatmap(principal_cells = principalCells, save_path = "results/principal_cells_heatmap.png")
 
 # Save results
 save_data("results/spike_matrix.npy", spike_matrix)

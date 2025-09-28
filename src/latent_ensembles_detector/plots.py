@@ -15,11 +15,11 @@ def plot_principal_cells_heatmap(
     principal_cells: Sequence[Sequence[int]],
     n_neurons: Optional[int] = None,
     sort_by: Optional[str] = None,
-    figsize: tuple = (8, 6),
-    xlabel: str = "Neurons (id)",
-    ylabel: str = "Ensemble",
-    title: str = "Principal cells per ensemble",
-    cmap: str = "viridis",
+    figsize: Optional[tuple] = (8, 6),
+    xlabel: Optional[str] = "Neurons (id)",
+    ylabel: Optional[str] = "Ensemble",
+    title: Optional[str] = "Principal cells per ensemble",
+    cmap: Optional[str] = "viridis",
     save_path: Optional[str] = None,
 ) -> plt.Figure:
     """
