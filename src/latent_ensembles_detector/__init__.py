@@ -10,5 +10,5 @@ __all__ = [
     "find_principal_neurons", 
     "load_data", 
     "save_data", 
-    ""plot_principal_cells_heatmap"
+    "plot_principal_cells_heatmap"
 ]
