@@ -7,8 +7,7 @@ import json
 import os
 
 
-def load_data(file_path: str, name: str) -> Tuple[np.ndarray, np.ndarray]:
-   def load_data(path: str) -> Tuple[Any, Dict]:
+def load_data(path: str) -> Tuple[np.ndarray, np.ndarray]:
     """
     Load a file saved by save_data.
     Returns (obj, metadata_dict_or_empty).
