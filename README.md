@@ -35,5 +35,5 @@ pip install -r requirements.txt
 Maintainer: Sara Molas Medina. Open issues or PRs for questions, bugs, or feature requests.
 
 ### Reference:
-Replication of the method used in: 
-- Lopes-dos-Santos V et al (2014). Detecting cell assemblies in large neuronal populations. J Neurosci Methods. 220(2):149-66. doi: 10.1016/j.jneumeth.2013.04.010.
+Replication of the method by: 
+Lopes-dos-Santos V et al (2014). Detecting cell assemblies in large neuronal populations. J Neurosci Methods. 220(2):149-66. doi: 10.1016/j.jneumeth.2013.04.010.
