@@ -10,8 +10,8 @@ latent_ensembles_detection/
 ├── setup.py
 ├── src/
 │   ├── __init__.py
-│   ├── detect.py # process spike data, run fastICA, find principal neurons in each ensemble
-│   ├── utils.py # utilities for loading and saving data
+│   ├── detect.py # run fastICA, find principal neurons in each ensemble
+│   ├── utils.py # utilities for loading and saving data, and pre-processing spikes
 │   └── plots.py # plotting functions
 ├── notebooks/ # clean notebook demonstrating usage
 └──  examples/ # example runner script
