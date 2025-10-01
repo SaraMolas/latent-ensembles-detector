@@ -7,47 +7,6 @@ from typing import Tuple, Optional
 import scipy.stats as stats
 from sklearn.decomposition import FastICA
 
-def compute_spike_matrix (spikeTimes: np.ndarray, spikeClusters: np.ndarray, time: np.ndarray, start_time: float,
-                           end_time: float, sampling_rate: int) -> Tuple[np.ndarray, np.ndarray]:
-    """Compute spike matrix from spike times and clusters"""
-
-    timestamps = np.arange(time[0],math.ceil(time[-1]), 0.025) # get timestamps in 25 ms bins
-    cell_IDs = np.unique(spikeClusters) # get number of cells
-    spike_matrix = np.zeros((len(cell_IDs), len(timestamps))) # create matrix with zeros
-    n_bins = len(timestamps) 
-
-    # Fill matrix with spike count for each neuron per timebin
-    # then iterate through number of place cells in place cells list
-    for counter, cell in enumerate(cell_IDs):
-
-        cell_indexes = np.where(spikeClusters == cell) # find the indices of the spikes of that cell
-        spike_times_OE = spikeTimes[cell_indexes] # extract times at which that cell fired
-
-        # need to convert times from Openephys times to seconds or milliseconds
-        spike_times = spike_times_OE / sampling_rate # divide by sampling rate to get seconds
-
-        # Extract spikes from the recording session (only matters if there is multiple sessions in one recording)
-        spike_times_session = spike_times[(spike_times >= start_time) & (spike_times <= end_time)] # extract spikes from that session
-        
-        # then allocate 1s in the matrix in the timebins when it fired - use histogram function
-        binnedSpikes, _= np.histogram(spike_times_session, bins = n_bins)
-        zBinnedSpikes = stats.zscore(binnedSpikes) # z-score the binned spikes
-        spike_matrix[counter, :] = zBinnedSpikes # fill the matrix with the z-scored binned spikes
-
-    # Remove rows with all NaNs
-    spike_matrix_clean = spike_matrix
-    cell_IDs_clean = cell_IDs
-    row = 0
-    for it in range(spike_matrix.shape[0]):
-        if np.isnan(spike_matrix_clean[row,:]).all() == True:
-            spike_matrix_clean = np.delete(spike_matrix_clean, row, 0)
-            cell_IDs_clean = np.delete(cell_IDs_clean , row, 0)
-            row = row
-        else:
-            row = row + 1
-        
-    return spike_matrix_clean, cell_IDs_clean
-
 def estimate_ensembles_number(spike_matrix: np.ndarray) -> int:
     """Estimate number of ensembles from spike matrix using Marcenko-Pastur distribution"""
     
