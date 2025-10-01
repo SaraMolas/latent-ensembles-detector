@@ -3,7 +3,7 @@ Functions required for performing FastICA
 """
 import numpy as np
 import math
-from typing import Dict, Any, Tuple, float, int, Optional
+from typing import Tuple, Optional
 import scipy.stats as stats
 from sklearn.decomposition import FastICA
 

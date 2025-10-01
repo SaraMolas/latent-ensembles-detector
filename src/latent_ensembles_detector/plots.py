@@ -2,7 +2,7 @@
 Plotting functions for latent ensembles detector.
 """
 # src/place_cell_simulations/viz.py
-from typing import List, Sequence, Optional, Dict, Any
+from typing import Sequence, Optional
 import numpy as np
 import matplotlib.pyplot as plt
 import os
